@@ -1,19 +1,22 @@
-import { Card } from "./components/Card";
-import movies from "./data/movies";
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import Home from "./components/pages/Home";
+import MoviesPages from "./components/pages/MoviesPages";
+
+
 
 function App() {
+
+ 
+
+
   return (
-    <div className="App">
-      {movies.map((currentMovie) => {
-        return (
-          <Card
-            movieTitle={currentMovie.original_title}
-            sinopse={currentMovie.overview}
-            img={`https://image.tmdb.org/t/p/w500/${currentMovie.backdrop_path}`}
-          />
-        );
-      })}
-    </div>
+   <BrowserRouter>
+     <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies/:movieName" element={<MoviesPages />}/>
+     </Routes>
+   </BrowserRouter>
+
   );
 }
 
